@@ -1,0 +1,178 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<title>分布式容器化云计算平台-</title>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/home.css">
+	<style type="text/css">
+		body{
+				margin: 0;
+				padding: 0;
+			}
+		table{
+			width:1300px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+            background-color: gray;
+            font-weight: 1000;
+        }
+        table thead tr{
+        	background-color: orange;
+        	height: 70px;
+        	font-size: 40px;
+        	
+        }
+        table tbody tr{
+        	font-size:30px;
+        	height:50px;
+        }
+        table tr td{
+            border: 2px solid black;
+            border-left-color: white;
+        }
+        .td1{
+        	border-right-color: white;
+        }
+        table tbody tr:nth-child(2n-1){
+        	background-color: darkgray;
+        }
+
+
+
+
+		</style>
+</head>
+<body>
+
+	<!-- header begin -->
+		<header id="aui-header">
+			<div class="aui-head-box top">
+				<div class="aui-container">
+				
+					<div class="aui-head-menu">
+						<ul>
+							<li><a href="index.html">作品简介</a></li>
+							<li><a href="about.html" >团队介绍</a></li>
+							<li><a href="machinestate.html">机器状态</a></li>
+							<li><a href="taskstate.html"class="index">任务状态</a></li>
+							<li><a href="visualization.html">可视化</a></li>
+						</ul>
+					</div>
+					<div class="aui-head-login">
+						<ul>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+	<!-- header end -->
+
+	<!-- banner begin -->
+		<section id="aui-price-bj">
+			<div class="aui-price-bj">
+				<div class="aui-price-text">
+					<h1>任务状态</h1>
+					<p>Task State</p>
+					<h2>一键查询任务状态，获取任务详情</h2>
+				</div>
+			</div>
+		</section>
+	<!-- banner end -->
+
+<table id="tb" >
+			<thead>
+				<tr>
+					<td>流程id</td>
+					<td>机器ip</td>
+					<td>port</td>
+					<td class="td1">流程状态</td>
+				</tr>
+			</thead>
+			<tbody id="mybody">
+			</tbody>
+
+
+
+
+
+</body>
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/slider.js"></script>
+	<script type="text/javascript">
+	    $(function() {
+	        var bannerSlider = new Slider($('#banner_tabs'), {
+	            time: 5000,
+	            delay: 400,
+	            event: 'hover',
+	            auto: true,
+	            mode: 'fade',
+	            controller: $('#bannerCtrl'),
+	            activeControllerCls: 'active'
+	        });
+	        $('#banner_tabs .flex-prev').click(function() {
+	            bannerSlider.prev()
+	        });
+	        $('#banner_tabs .flex-next').click(function() {
+	            bannerSlider.next()
+	        });
+	    });
+
+	    //头部浮动效果
+	    var head=$(".head").height();
+	    $(window).scroll(function(){
+	        var topScr=$(window).scrollTop();
+	        if (topScr>head) {
+	            $(".top").addClass("fixed");
+	        }else{
+	            $(".top").removeClass("fixed");
+	        }
+	    });
+
+	    // 服务行业内容 切换
+        $(".con ul li").hover(function(){
+            $(this).find(".txt").stop().animate({height:"198px"},400);
+            $(this).find(".txt h3").stop().animate({paddingTop:"60px"},400);
+        },function(){
+            $(this).find(".txt").stop().animate({height:"45px"},400);
+            $(this).find(".txt h3").stop().animate({paddingTop:"0px"},400);
+        })
+
+        $.get("/flow/list", {}, function(data,status){
+            var html="";
+            for(var i=0;i<data.length;i++){
+//			html+="<tr>";
+//			html+="<td>"+jsondata[i].id+"</td><td>"+jsondata[i].ip+"</td><td>"+jsondata[i].port+"</td><td>"+jsondata[i].state+"</td>";
+//			html+="</tr>";
+                var states=['计算中','计算完成']
+                html+=`
+				<tr>
+					<td>${data[i].fid}</td>
+					<td>${data[i].mip}</td>
+					<td>${data[i].port}</td>
+					<td class="td1"><a href="javascript:detail(${data[i].fid})">${states[data[i].fstate-1]}</a></td>
+				</tr>
+			`
+            }
+            var mybody=document.getElementById("mybody");
+
+            mybody.innerHTML=html;
+
+
+		})
+
+		function detail(fid) {
+            localStorage.setItem("fid",fid)
+            window.location.href="taskdetail.html"
+        }
+
+
+	</script>
+
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>详情页</title>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+            background-color: gray;
+            font-weight: 1000;
+        }
+
+        table thead tr {
+            background-color: orange;
+            height: 70px;
+            font-size: 40px;
+
+        }
+
+        table tbody tr {
+            font-size: 30px;
+            height: 50px;
+        }
+
+        table tr td {
+            border: 2px solid black;
+            border-left-color: white;
+        }
+
+        .td1 {
+            border-right-color: white;
+        }
+
+        table tbody tr:nth-child(2n-1) {
+            background-color: darkgray;
+        }
+        .main{
+            height: 30px;
+            width:500px;
+            background: #787878;
+            margin:100px auto;
+            border-radius: 3px;
+        }
+        .inner{
+            height: 20px;
+            width: 0;
+            background: #e4a348;
+            position: relative;
+            top: 2px;
+            left: 5px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .line{
+            position: relative;
+            left: 5px;
+            top: 14px;
+            width: 490px;
+            border-top: 3px dashed #fff;
+        }
+        .data{
+            height: 24px;
+            width:43px;
+            border: 1px solid;
+            position: absolute;
+            left: 396px;
+            margin-top: 55px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div class="data"></div>
+<div class="main">
+    <div class="line"></div>
+    <div class="inner"></div>
+</div>
+<table id="tb">
+    <thead>
+    <tr>
+        <td>流程id</td>
+        <td class="td1">容器id</td>
+    </tr>
+    </thead>
+    <tr>
+        <td id="fid"></td>
+        <td id="cid" class="td1"></td>
+    </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+    <tr>
+        <td>参数</td>
+        <td class="td1">结果</td>
+    </tr>
+    </thead>
+    <tr>
+        <td id="param"></td>
+        <td id="result" class="td1"></td>
+    </tr>
+</table>
+
+<table>
+    <thead>
+    <tr>
+        <td>流程状态</td>
+        <br>
+        <td>容器ip</td>
+        <td class="td1">宿主机ip</td>
+    </tr>
+    </thead>
+    <tr>
+        <td id="fstate"></td>
+        <td id="mip" class="td1"></td>
+        <td id="pip"></td>
+    </tr>
+</table>
+
+<table>
+    <thead>
+    <tr>
+        <td>容器端口</td>
+        <td class="td1">容器状态</td>
+    </tr>
+    </thead>
+    <tr>
+        <td id="port"></td>
+        <td id="cstate" class="td1"></td>
+    </tr>
+</table>
+
+
+<script type="text/javascript">
+
+
+    $(function () {
+        var fid = localStorage.getItem("fid");
+        $.get("/flow/getById", {
+            fid
+        }, function (jsondata, status) {
+
+           // alert(JSON.stringify(jsondata))
+            $("#fid").text(jsondata.fid)
+            $("#cid").text(jsondata.cid)
+            $("#param").text(jsondata.param)
+            $("#result").text(jsondata.result)
+
+            var states=['计算中','计算完成']
+            $("#fstate").text(states[jsondata.fstate-1])
+            $("#mip").text(jsondata.mip)
+            $("#pip").text(jsondata.pip)
+            $("#port").text(jsondata.port)
+
+            var states=['等待中','计算中']
+            $("#cstate").text(states[jsondata.cstate-1])
+
+        })
+    })
+
+
+
+
+
+</script>
+<script type="text/javascript">
+    var _width =0;
+    var timer;
+    timer = setInterval(function(){
+        _width +=5;
+        if(_width>150){
+            document.getElementsByClassName("inner")[0].style.background="#004c8a";
+        }
+        if(_width>350){
+            document.getElementsByClassName("inner")[0].style.background="#cd4c49";
+        }
+        if(_width>=490){
+            clearInterval(timer);
+        }
+        document.getElementsByClassName("inner")[0].style.width=_width+"px";
+        var _data = Math.floor((_width/490)*100);
+        document.getElementsByClassName("data")[0].innerText = _data+"%";
+        document.getElementsByClassName("data")[0].style.left=396+_width+"px";
+    },100);
+</script>
+</body>
+</html>

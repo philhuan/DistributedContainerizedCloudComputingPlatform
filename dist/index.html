@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<title>分布式容器化云计算平台-</title>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+	<!-- header begin -->
+		<header id="aui-header">
+			<div class="aui-head-box top">
+				<div class="aui-container">
+					
+					<div class="aui-head-menu">
+						<ul>
+							<li><a href="index.html" class="index">作品简介</a></li>
+							<li><a href="about.html">团队介绍</a></li>
+							<li><a href="machinestate.html">机器状态</a></li>
+							<li><a href="taskstate.html">任务状态</a></li>
+							<li><a href="visualization.html">可视化</a></li>
+						</ul>
+					</div>
+					<div class="aui-head-login">
+						<ul>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+	<!-- header end -->
+
+	<!-- banner begin -->
+		<section id="aui-price-bj">
+			<div class="aui-product-bj">
+				<div class="aui-price-text">
+					<h1>分布式容器化云计算平台</h1>
+					<p>可以脱离网络使用的云计算平台</p>
+				</div>
+			</div>
+		</section>
+	<!-- banner end -->
+
+	<!-- left right begin -->
+		<section id="product">
+			<div class="aui-container">
+				<div class="clearfix aui-ma">
+					<div class="aui-price-img">
+						<img src="img/product/product-01.png" alt="">
+					</div>
+					<div class="aui-product-text">
+						<h2>多人协作<small>「满足计算爆发增长需求」</small></h2>
+						<p>无需网络，也可实现协同计算</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="aui-product-background">
+				<div class="aui-container">
+					<div class="clearfix aui-ma">
+						<div class="aui-price-img" style="float:right">
+							<img src="img/product/product-02.png" alt="">
+						</div>
+						<div class="aui-product-text">
+							<h2>操作简单<small>「降低云计算的门槛」</small></h2>
+							<p>方便移植，有利于多平台用户使用</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+	<!-- left right end -->
+
+	<!-- footer begin -->
+
+	<!-- footer end -->
+
+</body>
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/slider.js"></script>
+	<script type="text/javascript">
+	    $(function() {
+	        var bannerSlider = new Slider($('#banner_tabs'), {
+	            time: 5000,
+	            delay: 400,
+	            event: 'hover',
+	            auto: true,
+	            mode: 'fade',
+	            controller: $('#bannerCtrl'),
+	            activeControllerCls: 'active'
+	        });
+	        $('#banner_tabs .flex-prev').click(function() {
+	            bannerSlider.prev()
+	        });
+	        $('#banner_tabs .flex-next').click(function() {
+	            bannerSlider.next()
+	        });
+	    });
+
+	    //头部浮动效果
+	    var head=$(".head").height();
+	    $(window).scroll(function(){
+	        var topScr=$(window).scrollTop();
+	        if (topScr>head) {
+	            $(".top").addClass("fixed");
+	        }else{
+	            $(".top").removeClass("fixed");
+	        }
+	    });
+
+	    // 服务行业内容 切换
+        $(".con ul li").hover(function(){
+            $(this).find(".txt").stop().animate({height:"198px"},400);
+            $(this).find(".txt h3").stop().animate({paddingTop:"60px"},400);
+        },function(){
+            $(this).find(".txt").stop().animate({height:"45px"},400);
+            $(this).find(".txt h3").stop().animate({paddingTop:"0px"},400);
+        })
+	</script>
+</html>

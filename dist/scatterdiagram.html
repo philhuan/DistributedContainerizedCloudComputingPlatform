@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	
+
+	<!--<script type="text/javascript" src="exporting.js"></script>
+<script type="text/javascript" src="highcharts.js"></script>
+<script type="text/javascript" src="highcharts-zh_CN.js"></script>-->
+<script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+<script type="text/javascript" src="exporting.js"></script>
+<script type="text/javascript" src="highcharts.js"></script>
+<script type="text/javascript" src="highcharts-zh_CN.js"></script>
+<script type="text/javascript">
+    $.get("/flow/list", {}, function(a,status){
+        var b=[];
+        for(var i=0;i<a.length;i++){
+            b[i]=i;
+        }
+        var c=[];
+        for(var i=0;i<a.length;i++){
+            c[i]=a[i].result*100;
+        }
+
+        $('#container').highcharts({
+            chart: {
+                type: 'scatter',
+                zoomType: 'xy'
+            },
+            title: {
+                text: '数据分布图'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                categories:b,
+                title: {
+                    enabled: true,
+                    text: '数组下标 '
+                }
+//		startOnTick: true,
+//		endOnTick: true,
+//		showLastLabel: true
+            },
+            yAxis: {
+                title: {
+                    text: '适应度'
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                x: 100,
+                y: 70,
+                floating: true,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+                borderWidth: 1
+            },
+            plotOptions: {
+                scatter: {
+                    marker: {
+                        radius: 5,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                lineColor: 'rgb(100,100,100)'
+                            }
+                        }
+                    },
+                    states: {
+                        hover: {
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: '{point.x} , {point.y} '
+                    }
+                }
+            },
+            series: [{
+                name: '适应度',
+                color: 'rgba(119, 152, 191, 0.5)',
+                data:c
+
+
+
+            }],
+        });
+	})
+
+
+
+	$(function(){
+
+	});
+	
+
+</script>
+</head>
+	<body>
+		<div id="container" style="min-width:700px;height:900px"></div>
+		
+	</body>
+</html>
+
+
+
