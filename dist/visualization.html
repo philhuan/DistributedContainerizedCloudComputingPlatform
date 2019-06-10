@@ -11,6 +11,10 @@
 	<link rel="stylesheet" href="css/base.css">
 	<link rel="stylesheet" href="css/home.css">
 		<style type="text/css">
+		@font-face {
+				font-family:pingfang;
+				src: url('PingFang Light.ttf');
+			}
 		.main{
             height: 30px;
             width:500px;
@@ -44,58 +48,77 @@
             top: 570px;
             text-align: center;
         }
+		.img4{
+			width:150px;
+			margin-left: 44.3%;
+			}
 		.img1{
 			width:130px;
-			margin-left: 590px;
+			margin-left: 45%;
 			margin-bottom: -20px;
 			
 		}
 		.img2{
 			width:80px;
-			margin-left: 370px;
-			margin-top: -30px;
+			margin-left: 28%;
+			margin-top: -40px;
 			margin-bottom: -20px;
 		}
 		.img3{
 			width:80px;
-			margin-left:850px;
+			margin-left:66%;
 			margin-top: -60px;
 			
 		}
-		.s1{
-			/*border:  30px solid black;*/
-			width:30px;
+		.s3{
+			width:5px;
 			height: 100px;
 			background-color:gray ;
+			margin: auto;
+			margin-bottom: -10px;
+		}
+		
+		.s1{
+			border: 5px dashed gray;
+			width:5px;
+			border-bottom:none;
+			border-left:none;
+			height: 100px;
+			background-color:white ;
 			margin: auto;
 			margin-bottom: 0;
 		}
 		.s2{
-			border:30px solid gray;
-			border-bottom-color: white;
-			height:120px;
+			border:5px dashed gray;
+			border-bottom:none;
+			height:100px;
 			width: 500px;
 			margin: 0 auto;
 			/*padding 100px;*/
 			background-color: white;
 		}
 		.btn{
+			font-family: pingfang;
 			font-size:20px;
-			font-family: "新宋体";
-			width:500px;
+			width:120px;
 			height: 50px;
-			color:black;
-			background-color: gray;
+			color:rgb(18,150,219);
+			background-color: rgb(230,230,230);
+			border-radius:20px;
+			border:none;
+			outline:none;
+			
 		}
 		.btn:hover{
-			background-color:green ;
+			background-color:gray ;
 		}
 		.div1{
-			margin-left: 400px;
-			margin-bottom:20px;
+		    margin-top:-30px;
+			margin-left: 590px;
+			margin-bottom:50px;
 		}
 		.box{
-			width:1300px;
+			width:100%;
 		}
 		</style>
 </head>
@@ -148,12 +171,13 @@
 		<div class="div1">
 			<button onclick="change()" class="btn">点击连接</button>
 		</div>
-		
-		<img src="img/0.jpg" class="img1">
+		<img src="img/3.png" class="img4">
+		<div class="s3" id="s3"></div>
+		<img src="img/0.png" class="img1">
 		<div class="s1" id="s1"></div>
 		<div class="s2" id="s2"></div>
-		<img src="img/1.jpg" class="img2" onclick="imgchange()">
-		<img src="img/2.jpg" class="img3" onclick="imgchange()">
+		<img src="img/1.png" class="img2" onclick="imgchange()">
+		<img src="img/2.png" class="img3" onclick="imgchange()">
 		</div>
 <script type="text/javascript">
 			document.getElementsByClassName("data")[0].innerText = "0%";
@@ -179,10 +203,11 @@
 	        document.getElementsByClassName("data")[0].style.left=396+_width+"px";
 	        if(_data==100){
 					var color1=document.getElementById("s1");
-					color1.style.backgroundColor="green";
+					color1.style.borderColor="green";
 					var color2=document.getElementById("s2");
 					color2.style.borderColor="green";
-					color2.style.borderBottomColor="white";
+					var color3=document.getElementById("s3");
+					color3.style.backgroundColor="green";
 				}
 	    },100);
 			}
