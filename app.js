@@ -8,7 +8,7 @@ const static = require('koa-static');
 const path = require("path");
 
 const app = new Koa();
-const port = '8080'
+const port =8652
 
 // 获取所有异常
 onerror(app, {
@@ -32,7 +32,7 @@ app.use(logger())
 .
 use(router.routes())	//路由控制
     .use(router.allowedMethods())
-    .listen(8652);
+    .listen(port);
 
 console.log(`port:${port}`)
 
