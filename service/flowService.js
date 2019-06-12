@@ -41,3 +41,8 @@ module.exports.getById=async ctx=>{
     return ctx.body=dbresult[0]
 }
 
+module.exports.deleteTable=async ctx=>{
+    let dbresult=await dao.deleteTable([]);
+    return ctx.body=dbresult
+}
+

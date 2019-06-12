@@ -13,16 +13,18 @@ async function list() {
 async function insert(data){
     let sql1 = `select * from ${table} WHERE mip='${data[0]}' AND port=${data[2]}`;
     let result1=await query(sql1,data);
-    console.log('sql'+ result1)
-    if(result1[0]){
-        return {
-            "affectedRows": 1,
-            "message": ""
-        }
+    //console.log('sql'+ JSON.stringify(result1) )
+
+
+    if(!result1[0]){
+        let sql=`insert into ${table} (mip,pip,port,cstate) values (?,?,?,?)`;
+        let result=await query(sql,data);
+        return result.insertId;
+    }else{
+        return result1[0].cid
     }
-    let sql=`insert into ${table} (mip,pip,port,cstate) values (?,?,?,?)`;
-    let result=await query(sql,data);
-    return result;
+
+
 }
 
 //通过fid流程
@@ -47,10 +49,18 @@ async function updateByAddr(data){
 }
 
 
+//删表
+async function deleteTable (data){
+    let sql = `DELETE FROM ${table}`;
+    let result = await query(sql, data);
+    return result;
+}
+
 module.exports={
     list,
     insert,
     deleteFlow,
     update,
-    updateByAddr
+    updateByAddr,
+    deleteTable
 }

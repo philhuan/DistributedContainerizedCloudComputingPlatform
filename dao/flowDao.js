@@ -45,6 +45,13 @@ async function getById(data){
     return result;
 }
 
+//删表
+async function deleteTable (data){
+    let sql = `DELETE FROM ${table}`;
+    let result = await query(sql, data);
+    return result;
+}
+
 
 module.exports={
     listFlow,
@@ -52,5 +59,6 @@ module.exports={
     deleteFlow,
     updateFlow,
     updateResult,
-    getById
+    getById,
+    deleteTable
 }

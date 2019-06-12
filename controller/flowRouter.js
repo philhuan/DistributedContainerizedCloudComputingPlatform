@@ -6,4 +6,5 @@ router.get('/insert',flowService.insert)
 router.get('/updateState',flowService.updateState)
 router.get('/updateResult',flowService.updateResult)
 router.get('/getById',flowService.getById)
+router.get('/deleteTable',flowService.deleteTable)
 module.exports=router;

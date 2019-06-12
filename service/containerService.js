@@ -35,3 +35,9 @@ module.exports.updatebyAddr=async ctx=>{
     return ctx.body=dbresult
 }
 
+module.exports.deleteTable=async ctx=>{
+    let dbresult=await dao.deleteTable([]);
+    console.log(dbresult)
+    return ctx.body=dbresult
+}
+

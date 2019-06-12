@@ -1,28 +1,45 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="apple-touch-fullscreen" content="yes">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta name="format-detection" content="telephone=no">
-	<title>分布式容器化云计算平台-</title>
-	<link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="css/home.css">
-		<style type="text/css">
-		@font-face {
-				font-family:pingfang;
-				src: url('PingFang Light.ttf');
-			}
-		.main{
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>分布式容器化云计算平台-</title>
+    <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <link rel="stylesheet" href="./css/layui.css" media="all">
+    <script type="text/javascript" src="exporting.js"></script>
+    <script type="text/javascript" src="highcharts.js"></script>
+    <script type="text/javascript" src="highcharts-zh_CN.js"></script>
+    <script src="./layui.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+
+        $(function () {
+
+        });
+    </script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/home.css">
+    <style type="text/css">
+        @font-face {
+            font-family: pingfang;
+            src: url('PingFang Light.ttf');
+        }
+
+        .main {
             height: 30px;
-            width:500px;
+            width: 500px;
             background: #787878;
-            margin:100px auto;
+            margin: 100px auto;
             border-radius: 3px;
         }
-        .inner{
+
+        .inner {
             height: 20px;
             width: 0;
             background: #e4a348;
@@ -32,233 +49,380 @@
             border-radius: 2px;
             overflow: hidden;
         }
-        .line{
+
+        .line {
             position: relative;
             left: 5px;
             top: 14px;
             width: 490px;
             border-top: 3px dashed #fff;
         }
-        .data{
+
+        .data {
             height: 24px;
-            width:43px;
+            width: 43px;
             border: 1px solid;
             position: absolute;
             left: 396px;
             top: 570px;
             text-align: center;
+            overflow: hidden;
         }
-		.img4{
-			width:150px;
-			margin-left: 44.3%;
-			}
-		.img1{
-			width:130px;
-			margin-left: 45%;
-			margin-bottom: -20px;
-			
-		}
-		.img2{
-			width:80px;
-			margin-left: 28%;
-			margin-top: -40px;
-			margin-bottom: -20px;
-		}
-		.img3{
-			width:80px;
-			margin-left:66%;
-			margin-top: -60px;
-			
-		}
-		.s3{
-			width:5px;
-			height: 100px;
-			background-color:gray ;
-			margin: auto;
-			margin-bottom: -10px;
-		}
-		
-		.s1{
-			border: 5px dashed gray;
-			width:5px;
-			border-bottom:none;
-			border-left:none;
-			height: 100px;
-			background-color:white ;
-			margin: auto;
-			margin-bottom: 0;
-		}
-		.s2{
-			border:5px dashed gray;
-			border-bottom:none;
-			height:100px;
-			width: 500px;
-			margin: 0 auto;
-			/*padding 100px;*/
-			background-color: white;
-		}
-		.btn{
-			font-family: pingfang;
-			font-size:20px;
-			width:120px;
-			height: 50px;
-			color:rgb(18,150,219);
-			background-color: rgb(230,230,230);
-			border-radius:20px;
-			border:none;
-			outline:none;
-			
-		}
-		.btn:hover{
-			background-color:gray ;
-		}
-		.div1{
-		    margin-top:-30px;
-			margin-left: 590px;
-			margin-bottom:50px;
-		}
-		.box{
-			width:100%;
-		}
-		</style>
+
+        .img4 {
+            width: 150px;
+            margin-left: 44.3%;
+        }
+
+        .img1 {
+            width: 130px;
+            margin-left: 45%;
+            margin-bottom: -20px;
+
+        }
+
+        .img2 {
+            width: 80px;
+            margin-left: 28%;
+            margin-top: -40px;
+            margin-bottom: -20px;
+        }
+
+        .img3 {
+            width: 80px;
+            margin-left: 66%;
+            margin-top: -60px;
+
+        }
+
+        .s3 {
+            width: 5px;
+            height: 100px;
+            background-color: gray;
+            margin: auto;
+            margin-bottom: -10px;
+            margin-top: -5px;
+        }
+
+        .s1 {
+            border: 5px dashed gray;
+            width: 5px;
+            border-bottom: none;
+            border-left: none;
+            height: 100px;
+            background-color: white;
+            margin: auto;
+            margin-bottom: 0;
+        }
+
+        .s2 {
+            border: 5px dashed gray;
+            border-bottom: none;
+            height: 100px;
+            width: 500px;
+            margin: 0 auto;
+            /*padding 100px;*/
+            background-color: white;
+        }
+
+        .btn {
+            font-family: pingfang;
+            font-size: 20px;
+            width: 120px;
+            height: 50px;
+            color: rgb(18, 150, 219);
+            background-color: rgb(230, 230, 230);
+            border-radius: 20px;
+            border: none;
+            outline: none;
+
+        }
+
+        .btn:hover {
+            background-color: gray;
+        }
+
+        .div1 {
+            margin-top: -30px;
+            margin-left: 590px;
+            margin-bottom: 50px;
+        }
+
+        .box {
+            width: 1300px;
+        }
+
+        .img6 {
+            border: 2px solid rgb(193, 210, 240);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            overflow: auto;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0);
+        }
+    </style>
 </head>
 <body>
 <!-- header begin -->
-		<header id="aui-header">
-			<div class="aui-head-box top">
-				<div class="aui-container">
-				
-					<div class="aui-head-menu">
-						<ul>
-							<li><a href="index.html">作品简介</a></li>
-							<li><a href="about.html" >团队介绍</a></li>
-							<li><a href="machinestate.html">机器状态</a></li>
-								<li><a href="taskstate.html">任务状态</a></li>
-							<li><a href="visualization.html"class="index">可视化</a></li>
-							
-						</ul>
-					</div>
-					<div class="aui-head-login">
-						<ul>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</header>
-	<!-- header end -->
+<header id="aui-header">
+    <div class="aui-head-box top">
+        <div class="aui-container">
+
+            <div class="aui-head-menu">
+                <ul>
+                    <li><a href="index.html">作品简介</a></li>
+                    <li><a href="about.html">团队介绍</a></li>
+                    <li><a href="machinestate.html">机器状态</a></li>
+                    <li><a href="taskstate.html">任务状态</a></li>
+                    <li><a href="visualization.html" class="index">可视化</a></li>
+
+                </ul>
+            </div>
+            <div class="aui-head-login">
+                <ul>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header end -->
 
 
-	<!-- banner begin -->
-		<section id="aui-price-bj">
-			<div class="aui-service-bj">
-				<div class="aui-price-text">
-					<h1>可视化</h1>
-					<p>Visualization</p>
-					<h2>为用户提供更好的视觉享受与互动效果</h2>
-				</div>
-			</div>
-		</section>
-	<!-- banner end -->
-<hr>
-<h1><center>进度条及按钮</center></h1>
-<hr>
+<!-- banner begin -->
+<section id="aui-price-bj">
+    <div class="aui-service-bj">
+        <div class="aui-price-text">
+            <h1>可视化</h1>
+            <p>Visualization</p>
+            <h2>为用户提供更好的视觉享受与互动效果</h2>
+        </div>
+    </div>
+</section>
+<!-- banner end -->
+
+<div class="layui-progress layui-progress-big" lay-showpercent="true" lay-filter="demo" style="margin: 40px">
+    <div id="prosser" class="layui-progress-bar layui-bg-blue" lay-percent="0%"></div>
+</div>
+
+
+<!--<div id="container" style="width:300px;height:300px"></div>-->
 <div class="box">
-<div class="data"></div>
-		<div class="main">
-    		<div class="line"></div>
-    		<div class="inner"></div>
-		</div>
-		<div class="div1">
-			<button onclick="change()" class="btn">点击连接</button>
-		</div>
-		<img src="img/3.png" class="img4">
-		<div class="s3" id="s3"></div>
-		<img src="img/0.png" class="img1">
-		<div class="s1" id="s1"></div>
-		<div class="s2" id="s2"></div>
-		<img src="img/1.png" class="img2" onclick="imgchange()">
-		<img src="img/2.png" class="img3" onclick="imgchange()">
-		</div>
+
+
+    <div class="div1">
+        <button onclick="change()" class="btn">点击连接</button>
+    </div>
+    <img src="img/3.png" class="img4">
+    <div class="s3" id="s3"></div>
+    <img src="img/0.png" class="img1" id="img1">
+    <div class="s1" id="s1"></div>
+    <div class="s2" id="s2"></div>
+    <img src="img/1.png" class="img2" id="img2">
+    <img src="img/2.png" class="img3" id="img3">
+    <div class="modal" id="simpleModal">
+        <div id="container" style="width:600px;height:300px" class="img6"></div>
+    </div>
+</div>
+
 <script type="text/javascript">
-			document.getElementsByClassName("data")[0].innerText = "0%";
-			var kaiguan=1;
-			function change(){
-			if(kaiguan){
-			var _width =0;
-    		var timer;
-    		timer = setInterval(function(){
-        	_width +=5;
-        	if(_width>150){
-            	document.getElementsByClassName("inner")[0].style.background="#004c8a";
-        	}
-        	if(_width>350){
-            	document.getElementsByClassName("inner")[0].style.background="#cd4c49";
-        	}
-	        if(_width>=490){
-	            clearInterval(timer);
-	        }
-	        document.getElementsByClassName("inner")[0].style.width=_width+"px";
-	        var _data = Math.floor((_width/490)*100);
-	        document.getElementsByClassName("data")[0].innerText = _data+"%";
-	        document.getElementsByClassName("data")[0].style.left=396+_width+"px";
-	        if(_data==100){
-					var color1=document.getElementById("s1");
-					color1.style.borderColor="green";
-					var color2=document.getElementById("s2");
-					color2.style.borderColor="green";
-					var color3=document.getElementById("s3");
-					color3.style.backgroundColor="green";
-				}
-	    },100);
-			}
-			kaiguan=0;
-			}
-			function imgchange(){
-				//window.open("scatterdiagram.html")
-                window.location.href="scatterdiagram.html"
-			}
-		</script>		
+    var modal = document.getElementById("simpleModal");
+    var modalbtn = document.getElementById("img2");
+    var modalbtn1 = document.getElementById("img3");
+    modalbtn.addEventListener("mouseover", openModal);
+    modalbtn.addEventListener("mouseout", closeModal);
+    modalbtn1.addEventListener("mouseover", openModal);
+    modalbtn1.addEventListener("mouseout", closeModal);
+    document.onmousemove = function (e) {
+        var oEvent = e || event;
+        modal.style.left = oEvent.clientX + 5 + 'px';
+        modal.style.top = oEvent.clientY + 5 - 300 + 'px';
+    }
+
+    function openModal() {
+        //				if(!this.contains(event.fromElement)){
+        modal.style.display = "block";
+        //				}
+    }
+
+    function closeModal() {
+        //				if(!this.contains(event.toElement)){
+        modal.style.display = "none";
+        //				}
+    }
+</script>
+
+<script type="text/javascript">
+    var kaiguan = 1;
+
+    function change() {
+
+            // $.get("/flow/deleteTable", {}, function (a, status) {
+            //
+            // })
+            // $.get("/container/deleteTable", {}, function (a, status) {
+            //
+            // })
+            var timer11=window.setInterval(updateData, 1000);
+
+            function updateData() {
+                $.get("/flow/list", {}, function (a, status) {
+
+                    updateProsse(a.length)
+                    if(a.length>=439){
+                        clearInterval(timer11)
+                        updateProsse(440)
+                    }
+
+
+                    var b = [];
+                    for (var i = 0; i < a.length; i++) {
+                        b[i] = i;
+                    }
+                    var c = [];
+                    for (var i = 0; i < a.length; i++) {
+                        c[i] = a[i].result * 100;
+                    }
+                    $('#container').highcharts({
+                        chart: {
+                            type: 'scatter',
+                            zoomType: 'xy'
+                        },
+                        title: {
+                            text: '数据分布图'
+                        },
+                        subtitle: {
+                            text: ''
+                        },
+                        xAxis: {
+                            categories: b,
+                            title: {
+                                enabled: true,
+                                text: '计算次数 '
+                            }
+                        },
+                        yAxis: {
+                            title: {
+                                text: '适应度'
+                            }
+                        },
+                        legend: {
+                            layout: 'vertical',
+                            align: 'left',
+                            verticalAlign: 'top',
+                            x: 100,
+                            y: 70,
+                            floating: true,
+                            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+                            borderWidth: 1
+                        },
+                        plotOptions: {
+                            scatter: {
+                                marker: {
+                                    radius: 5,
+                                    states: {
+                                        hover: {
+                                            enabled: true,
+                                            lineColor: 'rgb(100,100,100)'
+                                        }
+                                    }
+                                },
+                                states: {
+                                    hover: {
+                                        marker: {
+                                            enabled: false
+                                        }
+                                    }
+                                },
+                                tooltip: {
+                                    headerFormat: '<b>{series.name}</b><br>',
+                                    pointFormat: '{point.x} , {point.y} '
+                                }
+                            }
+                        },
+                        series: [{
+                            name: '适应度',
+                            color: 'rgba(119, 152, 191, 0.5)',
+                            data: c
+                        }],
+                    });
+                })
+            }
+
+
+
+    }
+</script>
 </body>
 
-	<script src="js/jquery-1.10.2.min.js"></script>
-	<script src="js/slider.js"></script>
-	<script type="text/javascript">
-	    $(function() {
-	        var bannerSlider = new Slider($('#banner_tabs'), {
-	            time: 5000,
-	            delay: 400,
-	            event: 'hover',
-	            auto: true,
-	            mode: 'fade',
-	            controller: $('#bannerCtrl'),
-	            activeControllerCls: 'active'
-	        });
-	        $('#banner_tabs .flex-prev').click(function() {
-	            bannerSlider.prev()
-	        });
-	        $('#banner_tabs .flex-next').click(function() {
-	            bannerSlider.next()
-	        });
-	    });
+<!--<script src="js/jquery-1.10.2.min.js"></script>-->
+<script src="js/slider.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var bannerSlider = new Slider($('#banner_tabs'), {
+            time: 5000,
+            delay: 400,
+            event: 'hover',
+            auto: true,
+            mode: 'fade',
+            controller: $('#bannerCtrl'),
+            activeControllerCls: 'active'
+        });
+        $('#banner_tabs .flex-prev').click(function () {
+            bannerSlider.prev()
+        });
+        $('#banner_tabs .flex-next').click(function () {
+            bannerSlider.next()
+        });
+    });
 
-	    //头部浮动效果
-	    var head=$(".head").height();
-	    $(window).scroll(function(){
-	        var topScr=$(window).scrollTop();
-	        if (topScr>head) {
-	            $(".top").addClass("fixed");
-	        }else{
-	            $(".top").removeClass("fixed");
-	        }
-	    });
+    //头部浮动效果
+    var head = $(".head").height();
+    $(window).scroll(function () {
+        var topScr = $(window).scrollTop();
+        if (topScr > head) {
+            $(".top").addClass("fixed");
+        } else {
+            $(".top").removeClass("fixed");
+        }
+    });
 
-	    // 服务行业内容 切换
-        $(".con ul li").hover(function(){
-            $(this).find(".txt").stop().animate({height:"198px"},400);
-            $(this).find(".txt h3").stop().animate({paddingTop:"60px"},400);
-        },function(){
-            $(this).find(".txt").stop().animate({height:"45px"},400);
-            $(this).find(".txt h3").stop().animate({paddingTop:"0px"},400);
-        })
-	</script>
+    // 服务行业内容 切换
+    $(".con ul li").hover(function () {
+        $(this).find(".txt").stop().animate({height: "198px"}, 400);
+        $(this).find(".txt h3").stop().animate({paddingTop: "60px"}, 400);
+    }, function () {
+        $(this).find(".txt").stop().animate({height: "45px"}, 400);
+        $(this).find(".txt h3").stop().animate({paddingTop: "0px"}, 400);
+    })
+</script>
+
+<script>
+
+
+    function updateProsse(prosse) {
+        layui.use('element', function () {
+            var $ = layui.jquery
+                , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+            var p=(prosse*100/440).toFixed(1);
+            $('.layui-progress-bar').attr('lay-percent',p+'%')
+            element.init();
+            element.progress('demo',  p+'%');
+
+           // $('#prosser').setAttribute('lay-percent','60%')
+
+
+
+
+
+        });
+    }
+
+</script>
 </html>
